@@ -2,15 +2,16 @@ from datetime import timedelta
 
 
 def calculate():
-    start_hour = input('Start time? (24H) ')
-    start_min = input('Start minute? ')
-    delta_hour = input('Delta hour? ')
-    delta_min = input('Delta minute? ')
+    start_time = input('Start time? (HH:MM) ')
+    delta_time = input('Delta time? (HH:MM) ')
 
-    start_time = timedelta(hours=int(start_hour),
-                           minutes=int(start_min) if start_min else 0)
-    time_delta = timedelta(hours=int(delta_hour),
-                           minutes=int(delta_min) if delta_min else 0)
+    start = start_time.split(':')
+    delta = delta_time.split(':')
+
+    start_time = timedelta(hours=int(start[0]),
+                           minutes=int(start[1]) if start[1] else 0)
+    time_delta = timedelta(hours=int(delta[0]),
+                           minutes=int(delta[1]) if delta[1] else 0)
 
     end_time = start_time + time_delta
     print(end_time)
